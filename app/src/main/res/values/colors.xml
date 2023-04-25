@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="mainstatus">#f29492</color>
+    <color name="mainappbar">#be008b</color>
+    <color name="bgcolor">#eceaf4</color>
+    <color name="green">#07A426</color>
+    <color name="lightgreen">#88D18F</color>
+    <color name="red">#ED0303</color>
+    <color name="splashstart">#8C27FF</color>
+    <color name="splashend">#F55B72</color>
+    <color name="lightred">#FFA4A4</color>
+    <color name="purple">#886A8E</color>
+    <color name="gray">#E6E6E6</color>
+    <color name="darkgray">#7B7B7B</color>
+    <color name="lightpurple">#D2C2D5</color>
+    <color name="blue">#3D61D4</color>
+    <color name="skin">#FFEBD4</color>
+    <color name="lightblue">#9BB2FB</color>
+    <color name="mustredyellow">#CB8E00</color>
+    <color name="timebtncolor">#597197</color>
+    <color name="menutextcolor">#a053ff</color>
+</resources>

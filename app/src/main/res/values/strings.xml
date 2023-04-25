@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Nagaland Lottery Sambad Result</string>
+    <string name="version">V.1.0.1</string>
+    <string name="phone_number">+91 7699779760</string>
+    <string name="native_id">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="native_id2">ca-app-pub-3940256099942544/2247696110</string>
+    <string name="intersitial_id">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="intersitial_id2">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="bannerad1">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="bannerad2">ca-app-pub-3940256099942544/6300978111</string>
+    <string name="details">সবসময় লটারি রেজাল্ট এর নির্ধারিত সময়ের থেকে 10 মিনিট পরে চেক করবেন যেমন আপনি যদি রাত 8 টার রেজাল্ট দেখতে চান তাহলে 8 টা 10 এর পরে চেক করবেন \n – কারণ রেজাল্ট রেডি করতে 10 মিনিট সময় লাগে</string>
+    <string name="nointernet">আপনার ফোনে ইন্টারনেট কানেকশন নেই দয়া করে \nডাটা কানেকশন অন করুন এবং পুনরায় চেষ্টা করুন</string>
+    <string name="oldresultk">আগের রেজাল্ট দেখুন</string>
+    <string name="old_results">Old Results</string>
+    <string name="_23_10_2023">23/10/2023</string>
+    <string name="exitappmsg">অ্যাপ বন্ধ করার জন্য দুবার ব্যাক বাটন ক্লিক করুন</string>
+    <string name="our_website">Our Website</string>
+    <string name="our_more_apps">Our More Apps</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="sharewhatsaap">অ্যাপ এ কোন সমস্যা হলে আমাদের জানেন</string>
+    <string name="send">আপনার যদি লটারি রেজাল্ট দেখতে অসুবিধা হয় তাহলে আমাদের অ্যাপ্লিকেশন ব্যবহার করে দেখতে পারেন আমাদের অ্যাপ্লিকেশন নোটিফিকেশনের মাধ্যমে জানিয়ে দেবে রেজাল্ট এসে গেছে দেখে নিন https://play.google.com/store/apps/details?id=com.lotteryesults.lottery.sambad</string>
+    <string name="appname">এখন লটারি রেজাল্ট দেখুন খুব সহজে</string>
+
+</resources>

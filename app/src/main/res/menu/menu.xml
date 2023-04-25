@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+<item android:id="@+id/website"
+    android:title="@string/our_website"
+    android:icon="@drawable/broaden"
+    android:iconTint="@color/menutextcolor"/>
+    <item android:id="@+id/moreapp"
+    android:title="@string/our_more_apps"
+    android:icon="@drawable/baseline_apps_24"
+    android:iconTint="@color/green"/>
+    <item android:id="@+id/privacy"
+    android:title="@string/privacy_policy"
+    android:icon="@drawable/exclamationpoint"
+ />
+    <item android:id="@+id/whatsaap"
+    android:title="@string/sharewhatsaap"
+    android:icon="@drawable/whatsapp"
+ />
+    <item android:id="@+id/share"
+    android:title="Share This App"
+    android:icon="@drawable/baseline_share_24"
+ />
+</menu>

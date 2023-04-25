@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "577665766818",
+    "firebase_url": "https://student-course-app-5b495-default-rtdb.firebaseio.com",
+    "project_id": "student-course-app-5b495",
+    "storage_bucket": "student-course-app-5b495.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577665766818:android:ddc09a50da1d131daa4efb",
+        "android_client_info": {
+          "package_name": "com.greymatter.studentcourseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577665766818-umcqrsq9bnjdu8bqanuq9n6p58j176p1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.greymatter.studentcourseapp",
+            "certificate_hash": "26dcdb2f491822eb75302a7b73e0b3846243e615"
+          }
+        },
+        {
+          "client_id": "577665766818-6476f041buut7sl1aepnt0suaemu985k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWFPNOVaFNi-P3voS8Wo1zou-qR_-1aUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577665766818-6476f041buut7sl1aepnt0suaemu985k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577665766818:android:da944f9674d8e1cdaa4efb",
+        "android_client_info": {
+          "package_name": "com.papayacoders.nagalandlotterysambadresult"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577665766818-6476f041buut7sl1aepnt0suaemu985k.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDWFPNOVaFNi-P3voS8Wo1zou-qR_-1aUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577665766818-6476f041buut7sl1aepnt0suaemu985k.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
