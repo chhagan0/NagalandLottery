@@ -2,7 +2,7 @@
     android:interpolator="@android:anim/decelerate_interpolator">
 
     <scale
-        android:duration="70000"
+        android:duration="10000"
         android:fromXScale="1.0"
         android:fromYScale="1.0"
         android:toXScale="1.5"

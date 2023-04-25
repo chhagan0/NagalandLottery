@@ -90,7 +90,7 @@ class MainActivity : mainapp() {
 
         navigationView.setNavigationItemSelectedListener {
 
-//
+
             when (it.itemId) {
 
                 R.id.website -> {
@@ -293,57 +293,19 @@ class MainActivity : mainapp() {
         fadeIn.start()
     }
 
-    fun trans() {
-        val cardView = binding.showresult
 
-        val animation = TranslateAnimation(0f, -30f, 0f, 0f)
-        animation.duration = 1000
-        animation.fillAfter = true
-        animation.setAnimationListener(object : Animation.AnimationListener {
-            override fun onAnimationStart(animation: Animation?) {}
-            override fun onAnimationEnd(animation: Animation?) {
-                val reverseAnimation = TranslateAnimation(-30f, 0f, 0f, 0f)
-                reverseAnimation.duration = 1000
-                reverseAnimation.fillAfter = true
-                cardView.startAnimation(reverseAnimation)
-            }
 
-            override fun onAnimationRepeat(animation: Animation?) {}
-        })
-        cardView.startAnimation(animation)
-    }
-
-//    fun transminus() {
-//        val cardView = binding.showresult
-//
-//        val animation = ScaleAnimation( 0f, -30f, 0f, -30f)
-//        animation.duration = 1000
-//        animation.fillAfter = true
-//        animation.setAnimationListener(object : Animation.AnimationListener {
-//            override fun onAnimationStart(animation: Animation?) {}
-//            override fun onAnimationEnd(animation: Animation?) {
-//                val reverseAnimation = ScaleAnimation(30f, 0f, 0f, 0f)
-//                reverseAnimation.duration = 1000
-//                reverseAnimation.fillAfter = true
-//                cardView.startAnimation(reverseAnimation)
-//            }
-//
-//            override fun onAnimationRepeat(animation: Animation?) {}
-//        })
-//        cardView.startAnimation(animation)
-//    }
 
     fun repeatFunctionCall(times: Int) {
         if (times > 0) {
-//            trans()
-            val cardVieww = binding.showresult
+             val cardVieww = binding.showresult
             val animation = AnimationUtils.loadAnimation(this, R.anim.cardview_anim)
             cardVieww.startAnimation(animation)
             val handlerr = Handler()
             handlerr.postDelayed({
                 min()
 
-            }, 4000)
+            }, 600)
 
         }
     }
@@ -358,7 +320,7 @@ class MainActivity : mainapp() {
         handler.postDelayed({
 
             repeatFunctionCall(count)
-        }, 2200)
+        }, 300)
     }
 
     override fun onBackPressed() {
@@ -377,8 +339,7 @@ class MainActivity : mainapp() {
 
 
         if (toggle.onOptionsItemSelected(item)) {
-//            item.isChecked = true
-//            item.iconTintList = ColorStateList.valueOf(Color.BLUE)
+
             return true
         }
 

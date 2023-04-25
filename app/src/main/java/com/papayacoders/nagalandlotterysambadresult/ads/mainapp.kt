@@ -31,21 +31,7 @@ open class mainapp :AppCompatActivity() {
 
     }
 
-//  open fun cheakconnection(context: Context){
-//    if (!isInternetAvailable()) {
-//        val builder = AlertDialog.Builder(this)
-//        val view = layoutInflater.inflate(R.layout.alert_dialog, null)
-//        builder.setView(view)
-//        val alertDialog = builder.create()
-//        alertDialog.show()
-//        builder.setCancelable(false)
-//        alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-//        view.findViewById<CardView>(R.id.btnback).setOnClickListener {
-//startActivity(Intent(this,MainActivity::class.java))
-//            alertDialog.dismiss()
-//        }
-//    }
-//}
+
 
     open fun isInternetAvailable(): Boolean {
         val connectivityManager = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager

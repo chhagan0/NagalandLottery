@@ -5,7 +5,7 @@
 
 
     <scale
-        android:duration="80000"
+        android:duration="12000"
         android:fromXScale="1.05"
         android:fromYScale="1.05"
         android:toXScale="-0"
