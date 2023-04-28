@@ -78,6 +78,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_above="@id/adView"
         android:layout_below="@id/crd">
 
         <LinearLayout
@@ -102,6 +103,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="250dp"
+                        android:adjustViewBounds="true"
                         android:layout_marginHorizontal="@dimen/_8sdp"
                         android:layout_marginVertical="@dimen/_15sdp"
                         android:background="@drawable/winonecror"
@@ -473,16 +475,17 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.gms.ads.AdView
-                android:id="@+id/adView"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:adSize="BANNER"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:visibility="gone"
-                app:adUnitId="@string/bannerad1" />
+
 
         </LinearLayout>
     </ScrollView>
 
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/_15sdp"
+          app:adSize="SMART_BANNER"
+        app:adUnitId="@string/bannerad1" />
 </RelativeLayout>

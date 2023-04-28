@@ -1,9 +1,9 @@
 package com.papayacoders.nagalandlotterysambadresult.config
 
 data class Oldresult (
-    var date:String?="",
-    var result1:String?="",
-    var result2:String?="",
-    var result3:String?="",
+    var text:String?="",
+    var image1:String?="",
+    var image2:String?="",
+    var image3:String?="",
 )
 

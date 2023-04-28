@@ -1,25 +1,14 @@
 package com.papayacoders.nagalandlotterysambadresult
 
-import android.animation.AnimatorSet
-import android.animation.LayoutTransition
 import android.animation.ObjectAnimator
-import android.animation.PropertyValuesHolder
-import android.content.Context
 import android.content.Intent
-import android.content.res.ColorStateList
 import android.graphics.Color
-import android.graphics.PorterDuff
 import android.graphics.drawable.ColorDrawable
-import android.net.ConnectivityManager
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.os.Handler
-import android.text.Html
-import android.transition.ChangeBounds
-import android.transition.TransitionManager
 import android.util.Log.d
-import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.view.animation.*
@@ -27,7 +16,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
+import androidx.browser.customtabs.CustomTabsIntent
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -40,11 +29,9 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.papayacoders.nagalandlotterysambadresult.ads.backintersitial
-import com.papayacoders.nagalandlotterysambadresult.ads.intertitial
 import com.papayacoders.nagalandlotterysambadresult.ads.intertitial.Companion.load
 import com.papayacoders.nagalandlotterysambadresult.ads.intertitial.Companion.showAds
 import com.papayacoders.nagalandlotterysambadresult.ads.mainapp
-import com.papayacoders.nagalandlotterysambadresult.config.Result
 import com.papayacoders.nagalandlotterysambadresult.databinding.ActivityMainBinding
 
 
@@ -57,6 +44,7 @@ class MainActivity : mainapp() {
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
     private var previousMenuItem: MenuItem? = null
+
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,21 +83,30 @@ class MainActivity : mainapp() {
 
                 R.id.website -> {
 
-                      val uri = Uri.parse("http://bongappstore9.com/")
+
+                    val builder = CustomTabsIntent.Builder()
+                    val customTabsIntent = builder.build()
+
+                    val url = "http://bongappstore9.com/"
+                    customTabsIntent.launchUrl(this, Uri.parse(url))
+
+
+                }
+                R.id.moreapp -> {
+                    val uri =
+                        Uri.parse("https://play.google.com/store/search?q=pub:bongappstore9&c=apps")
                     val intent = Intent(Intent.ACTION_VIEW, uri)
                     startActivity(intent)
                 }
-                R.id.moreapp->{
-                     val uri =Uri.parse("https://play.google.com/store/search?q=pub:bongappstore9&c=apps")
-                    val intent=Intent(Intent.ACTION_VIEW,uri)
-                    startActivity(intent)
+                R.id.privacy -> {
+                    val builder = CustomTabsIntent.Builder()
+                    val customTabsIntent = builder.build()
+
+                    val url = "http://bongappstore9.com/lottery-result-today/"
+                    customTabsIntent.launchUrl(this, Uri.parse(url))
+
                 }
-                R.id.privacy->{
-                     val uri =Uri.parse("http://bongappstore9.com/lottery-result-today/")
-                    val intent=Intent(Intent.ACTION_VIEW,uri)
-                    startActivity(intent)
-                }
-                R.id.whatsaap->{
+                R.id.whatsaap -> {
                     val phoneNumber = getString(R.string.phone_number)
                     val message = "hi..."
                     val url =
@@ -119,7 +116,7 @@ class MainActivity : mainapp() {
                     intent.data = Uri.parse(url)
                     startActivity(intent)
                 }
-                R.id.share->{
+                R.id.share -> {
                     val shareIntent = Intent(Intent.ACTION_SEND)
                     shareIntent.type = "text/plain"
                     shareIntent.putExtra(Intent.EXTRA_TEXT, getString(R.string.send))
@@ -244,8 +241,9 @@ class MainActivity : mainapp() {
                         super.onAdLoaded()
                         binding.myTemplate.visibility = View.VISIBLE
                     }
+
                     override fun onAdFailedToLoad(adError: LoadAdError) {
-                        binding.myTemplate.visibility=View.GONE
+                        binding.myTemplate.visibility = View.GONE
                         d("CHAGAN", adError.toString())
                     }
                 })
@@ -267,15 +265,29 @@ class MainActivity : mainapp() {
     fun loadresult() {
         val database = FirebaseDatabase.getInstance()
         val ref = database.getReference("lotterytime")
+        val childReference = ref.child("result")
+
         ref.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                val url = snapshot.getValue(Result::class.java)
-                val result_1 = snapshot.child("time1result").value as String
-                val result_2 = snapshot.child("time2result").value as String
-                val result_3 = snapshot.child("time3result").value as String
-                url?.result1 = result_1.toString()
-                url?.result2 = result_2.toString()
-                url?.result3 = result_3.toString()
+                try {
+
+                    val result_1 =
+                        snapshot.child("result1").child("time1result").getValue(String::class.java)
+                    val result_2 =
+                        snapshot.child("result2").child("time2result").getValue(String::class.java)
+                    val result_3 =
+                        snapshot.child("result3").child("time3result").getValue(String::class.java)
+                    d("DAMM", result_3.toString())
+                    com.papayacoders.nagalandlotterysambadresult.config.Result.result1 =
+                        result_1.toString()
+//                url?.result1 = result_1.toString()
+                    com.papayacoders.nagalandlotterysambadresult.config.Result.result2 =
+                        result_2.toString()
+                    com.papayacoders.nagalandlotterysambadresult.config.Result.result3 =
+                        result_3.toString()
+                } catch (e: java.lang.NullPointerException) {
+                }
+
 
             }
 
@@ -294,16 +306,15 @@ class MainActivity : mainapp() {
     }
 
 
-
-
     fun repeatFunctionCall(times: Int) {
         if (times > 0) {
-             val cardVieww = binding.showresult
+            val cardVieww = binding.showresult
             val animation = AnimationUtils.loadAnimation(this, R.anim.cardview_anim)
             cardVieww.startAnimation(animation)
             val handlerr = Handler()
             handlerr.postDelayed({
                 min()
+
 
             }, 600)
 

@@ -29,6 +29,8 @@ import com.papayacoders.nagalandlotterysambadresult.databinding.ActivitySingleRe
 class SingleResult : mainapp() {
     lateinit var binding: ActivitySingleResultBinding
     var url: String = ""
+    private lateinit var adView: AdView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySingleResultBinding.inflate(layoutInflater)
@@ -43,7 +45,7 @@ class SingleResult : mainapp() {
                     target: Target<Drawable>?,
                     isFirstResource: Boolean
                 ): Boolean {
-                    binding.progressbar.visibility=View.GONE
+//                    binding.progressbar.visibility=View.GONE
                     return false
                 }
 
@@ -54,7 +56,7 @@ class SingleResult : mainapp() {
                     dataSource: DataSource?,
                     isFirstResource: Boolean
                 ): Boolean {
-binding.progressbar.visibility=View.GONE
+//binding.progressbar.visibility=View.GONE
                     return false
                 }
 
@@ -69,8 +71,11 @@ binding.progressbar.visibility=View.GONE
         photoView.minimumScale = 1f // set the minimum scale value
         photoView.isZoomable = true // enable zooming
         MobileAds.initialize(this)
-        nativeads()
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        adView = binding.adView
+        val adRequest = AdRequest.Builder().build()
+        adView.loadAd(adRequest)
+        showbannerad()
+         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.blue)
         }
         binding.btnback.setOnClickListener {
@@ -92,34 +97,23 @@ binding.progressbar.visibility=View.GONE
             }
         }
     }
+    private fun showbannerad() {
+        adView.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                adView.visibility = View.VISIBLE
+            }
 
-    private fun nativeads() {
-        MobileAds.initialize(this)
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                super.onAdFailedToLoad(p0)
+                Log.d("BANNER", "BANNER FAILED $p0")
+                adView.visibility = View.VISIBLE
 
 
-        val adLoader =
-            AdLoader.Builder(this, getString(R.string.native_id2))
-                .forNativeAd { nativeAd ->
-//                    binding?.loader?.visibility = View.GONE
-                    binding?.myTemplate?.visibility = View.VISIBLE
-
-                    val styles =
-                        NativeTemplateStyle.Builder().build()
-                    val template = findViewById<TemplateView>(R.id.my_template)
-                    template.setStyles(styles)
-                    template.setNativeAd(nativeAd)
-                }
-                .withAdListener(object : AdListener() {
-                    override fun onAdFailedToLoad(adError: LoadAdError) {
-                        Log.d("CHAGAN", adError.toString())
-                    }
-                })
-                .build()
-
-        adLoader.loadAd(AdRequest.Builder().build())
-
+            }
+        }
 
     }
+
 
     override fun onBackPressed() = if (!isInternetAvailable()) {
         val builder = AlertDialog.Builder(this)

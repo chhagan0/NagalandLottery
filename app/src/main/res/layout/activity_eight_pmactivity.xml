@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,6 +7,13 @@
     android:background="@color/bgcolor"
     android:orientation="vertical"
     tools:context=".result.EightPMActivity">
+
+
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/btnback"
@@ -24,14 +31,16 @@
 
     </com.google.android.material.card.MaterialCardView>
 
+
+
     <com.github.chrisbanes.photoview.PhotoView
         android:id="@+id/loadimage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/my_template"
-        android:layout_marginBottom="@dimen/_20sdp"
+         android:layout_marginBottom="@dimen/_20sdp"
+        android:adjustViewBounds="true"
         android:src="@drawable/noresult"
-        tools:ignore="MissingClass" />
+         />
 
     <com.google.android.ads.nativetemplates.TemplateView
         android:id="@+id/my_template"
@@ -40,5 +49,7 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="5dp"
         android:visibility="gone"
-        app:gnt_template_type="@layout/gnt_medium_template_view" />
+        android:layout_below="@id/loadimage"
+         app:gnt_template_type="@layout/gnt_medium_template_view" />
 </RelativeLayout>
+</ScrollView>

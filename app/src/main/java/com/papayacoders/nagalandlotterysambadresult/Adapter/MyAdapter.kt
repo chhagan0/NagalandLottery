@@ -5,12 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.card.MaterialCardView
-import com.papayacoders.nagalandlotterysambadresult.MainActivity
 import com.papayacoders.nagalandlotterysambadresult.R
-import com.papayacoders.nagalandlotterysambadresult.ShowOldResult
 import com.papayacoders.nagalandlotterysambadresult.config.Oldresult
 import com.papayacoders.nagalandlotterysambadresult.result.SingleResult
 
@@ -33,35 +30,35 @@ val itemView=LayoutInflater.from(parent.context).inflate(R.layout.layout_recycle
 return userList.size   }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-holder.datee.text =userList[position].date
- holder.res1.text=userList[position].result1
- holder.res2.text=userList[position].result2
- holder.res3.text=userList[position].result3
+holder.datee.text =userList[position].text
+ holder.res1.text=userList[position].image1
+ holder.res2.text=userList[position].image2
+ holder.res3.text=userList[position].image3
 holder.itemView.findViewById<MaterialCardView>(R.id.btnonepm).setOnClickListener {
     val intent = Intent(holder.itemView.context, SingleResult::class.java)
-    intent.putExtra("result", userList[position].result1)
+    intent.putExtra("result", userList[position].image1)
 
     holder.itemView.context.startActivity(intent)
 }
 holder.itemView.findViewById<MaterialCardView>(R.id.btnsixpm).setOnClickListener {
     val intent = Intent(holder.itemView.context, SingleResult::class.java)
-    intent.putExtra("result", userList[position].result2)
+    intent.putExtra("result", userList[position].image2)
 
     holder.itemView.context.startActivity(intent)
 }
 holder.itemView.findViewById<MaterialCardView>(R.id.btneightpm).setOnClickListener {
     val intent = Intent(holder.itemView.context, SingleResult::class.java)
-    intent.putExtra("result", userList[position].result3)
+    intent.putExtra("result", userList[position].image3)
 
     holder.itemView.context.startActivity(intent)
 }
-        holder.itemView.findViewById<MaterialCardView>(R.id.itemcrd ).setOnClickListener {
-            val intent = Intent(holder.itemView.context, ShowOldResult::class.java)
-            intent.putExtra("result1", userList[position].result1)
-            intent.putExtra("result2", userList[position].result3)
-            intent.putExtra("result3", userList[position].result3)
-             holder.itemView.context.startActivity(intent)
-        }
+//        holder.itemView.findViewById<MaterialCardView>(R.id.itemcrd ).setOnClickListener {
+//            val intent = Intent(holder.itemView.context, ShowOldResult::class.java)
+//            intent.putExtra("result1", userList[position].result1)
+//            intent.putExtra("result2", userList[position].result3)
+//            intent.putExtra("result3", userList[position].result3)
+//             holder.itemView.context.startActivity(intent)
+//        }
     }
 
 

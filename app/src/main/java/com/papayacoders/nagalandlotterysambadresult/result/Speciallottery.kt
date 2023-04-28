@@ -14,12 +14,17 @@ import com.bumptech.glide.Glide
 import com.google.android.ads.nativetemplates.NativeTemplateStyle
 import com.google.android.ads.nativetemplates.TemplateView
 import com.google.android.gms.ads.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.papayacoders.nagalandlotterysambadresult.MainActivity
 import com.papayacoders.nagalandlotterysambadresult.R
 import com.papayacoders.nagalandlotterysambadresult.ResultActivity
 import com.papayacoders.nagalandlotterysambadresult.ads.backintersitial
 import com.papayacoders.nagalandlotterysambadresult.ads.intertitial.Companion.showAds
 import com.papayacoders.nagalandlotterysambadresult.ads.mainapp
+import com.papayacoders.nagalandlotterysambadresult.config.Speciallottery
 import com.papayacoders.nagalandlotterysambadresult.databinding.ActivitySpeciallotteryBinding
 
 class Speciallottery : mainapp() {
@@ -29,7 +34,7 @@ class Speciallottery : mainapp() {
         binding= ActivitySpeciallotteryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         MobileAds.initialize(this)
-
+getspeciallottery()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.skin)
         }
@@ -52,18 +57,6 @@ class Speciallottery : mainapp() {
             }
         }
         nativeads()
-        // Load the Firebase image URL using Glide
-        Glide.with(this)
-            .load(com.papayacoders.nagalandlotterysambadresult.config.Speciallottery.result)
-            .placeholder(R.drawable.noresult) // set a default image whi le loading
-            .error(R.drawable.noresult) // set a default image if there is an error
-            .into(binding.loadimage)
-// Enable zooming and panning on the PhotoView
-        val photoView = binding.loadimage
-        photoView.maximumScale = 10f // set the maximum scale value
-        photoView.mediumScale = 5f // set the medium scale value
-        photoView.minimumScale = 1f // set the minimum scale value
-        photoView.isZoomable = true // enable zooming
 
     }
 
@@ -119,4 +112,43 @@ class Speciallottery : mainapp() {
         MobileAds.initialize(this)
 
     }
+    fun getspeciallottery() {
+        val database = FirebaseDatabase.getInstance()
+        val myRef = database.getReference("speciallottery")
+
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val data = dataSnapshot.getValue(Speciallottery::class.java)
+                var name = dataSnapshot.child("lotteryname").value as String
+                var url = dataSnapshot.child("result").value as String
+                val value = dataSnapshot.child("visible").getValue(Boolean::class.java)
+                name = data?.lotteryname.toString()
+                url = data?.result.toString()
+                showres(url.toString())
+             }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                Log.d("CHAGAN", "Special lottery Firebase $error")
+            }
+        })
+
+    }
+fun showres(url:String){
+    // Load the Firebase image URL using Glide
+    Glide.with(this)
+        .load(url)
+        .placeholder(R.drawable.noresult) // set a default image whi le loading
+        .error(R.drawable.noresult) // set a default image if there is an error
+        .into(binding.loadimage)
+// Enable zooming and panning on the PhotoView
+    val photoView = binding.loadimage
+    photoView.maximumScale = 10f // set the maximum scale value
+    photoView.mediumScale = 5f // set the medium scale value
+    photoView.minimumScale = 1f // set the minimum scale value
+    photoView.isZoomable = true // enable zooming
+
+}
 }

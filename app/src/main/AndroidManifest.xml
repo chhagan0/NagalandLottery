@@ -17,6 +17,9 @@
         android:theme="@style/Theme.NagalandLotterySambadResult"
         tools:targetApi="31">
         <activity
+            android:name=".WebBrowser"
+            android:exported="false" />
+        <activity
             android:name=".result.SingleResult"
             android:exported="false" />
         <activity

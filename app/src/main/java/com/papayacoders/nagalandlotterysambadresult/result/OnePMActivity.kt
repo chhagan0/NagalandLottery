@@ -14,6 +14,10 @@ import com.bumptech.glide.Glide
 import com.google.android.ads.nativetemplates.NativeTemplateStyle
 import com.google.android.ads.nativetemplates.TemplateView
 import com.google.android.gms.ads.*
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import com.papayacoders.nagalandlotterysambadresult.MainActivity
 import com.papayacoders.nagalandlotterysambadresult.R
 import com.papayacoders.nagalandlotterysambadresult.ResultActivity
@@ -29,7 +33,7 @@ class OnePMActivity : mainapp() {
         binding = ActivityOnePmactivityBinding.inflate(layoutInflater)
         setContentView(binding.root)
         MobileAds.initialize(this)
-
+loadresult()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.green)
         }
@@ -46,24 +50,13 @@ class OnePMActivity : mainapp() {
                     startActivity(Intent(this, MainActivity::class.java))
                     alertDialog.dismiss()
                 }
-            }else {
+            } else {
                 val inte = Intent(this, ResultActivity::class.java)
                 showAds(this, inte)
             }
         }
         nativeads()
-        // Load the Firebase image URL using Glide
-        Glide.with(this)
-            .load(com.papayacoders.nagalandlotterysambadresult.config.Result.result1)
-            .placeholder(R.drawable.noresult) // set a default image whi le loading
-            .error(R.drawable.noresult) // set a default image if there is an error
-            .into(binding.loadimage)
-// Enable zooming and panning on the PhotoView
-        val photoView = binding.loadimage
-        photoView.maximumScale = 10f // set the maximum scale value
-        photoView.mediumScale = 5f // set the medium scale value
-        photoView.minimumScale = 1f // set the minimum scale value
-        photoView.isZoomable = true // enable zooming
+
 
     }
 
@@ -88,8 +81,9 @@ class OnePMActivity : mainapp() {
                         super.onAdLoaded()
                         binding.myTemplate.visibility = View.VISIBLE
                     }
+
                     override fun onAdFailedToLoad(adError: LoadAdError) {
-                        binding.myTemplate.visibility=View.GONE
+                        binding.myTemplate.visibility = View.GONE
                         Log.d("CHAGAN", adError.toString())
                     }
                 })
@@ -113,14 +107,64 @@ class OnePMActivity : mainapp() {
                 startActivity(Intent(this, MainActivity::class.java))
                 alertDialog.dismiss()
             }
-        }else {
+        } else {
             val inte = Intent(this, ResultActivity::class.java)
             showAds(this, inte)
         }
     }
+
     override fun onResume() {
         super.onResume()
         MobileAds.initialize(this)
 
     }
+    fun loadresult() {
+        val database = FirebaseDatabase.getInstance()
+        val ref = database.getReference("lotterytime")
+        val childReference = ref.child("result")
+
+        ref.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+
+
+                    val result_1 =
+                        snapshot.child("result1").child("time1result").getValue(String::class.java)
+                    val result_2 =
+                        snapshot.child("result2").child("time2result").getValue(String::class.java)
+                    val result_3 =
+                        snapshot.child("result3").child("time3result").getValue(String::class.java)
+                    Log.d("DAMM", result_3.toString())
+//                    com.papayacoders.nagalandlotterysambadresult.config.Result.result1 =
+//                        result_1.toString()
+                    showimage(result_1.toString())
+//                url?.result1 = result_1.toString()
+                    com.papayacoders.nagalandlotterysambadresult.config.Result.result2 =
+                        result_2.toString()
+                    com.papayacoders.nagalandlotterysambadresult.config.Result.result3 =
+                        result_3.toString()
+
+
+
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Log.d("CHAGAN", "Firebase load error :  ${error}")
+            }
+
+        })
+    }
+fun showimage(url:String){
+        // Load the Firebase image URL using Glide
+        Glide.with(this)
+            .load(url)
+            .placeholder(R.drawable.noresult) // set a default image whi le loading
+            .error(R.drawable.noresult) // set a default image if there is an error
+            .into(binding.loadimage)
+// Enable zooming and panning on the PhotoView
+        val photoView = binding.loadimage
+        photoView.maximumScale = 10f // set the maximum scale value
+        photoView.mediumScale = 5f // set the medium scale value
+        photoView.minimumScale = 1f // set the minimum scale value
+        photoView.isZoomable = true // enable zooming
+}
 }
