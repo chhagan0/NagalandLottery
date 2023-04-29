@@ -35,12 +35,11 @@
 
         <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/loadimage"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
              android:src="@drawable/noresult"
             android:adjustViewBounds="true"
-            android:layout_marginBottom="@dimen/_20sdp"
-             />
+              />
 
         <com.google.android.ads.nativetemplates.TemplateView
             android:id="@+id/my_template"

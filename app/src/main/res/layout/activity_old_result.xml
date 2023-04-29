@@ -70,10 +70,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="@dimen/_5sdp"
-         app:adSize="SMART_BANNER"
-        android:visibility="gone"
-        app:adUnitId="@string/bannerad1" />
+          app:adSize="SMART_BANNER"
+         app:adUnitId="@string/bannerad1" />
 
     <ProgressBar
         android:id="@+id/progressbar"
@@ -82,8 +80,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerInParent="true"
         android:layout_marginEnd="176dp"
-        android:layout_marginBottom="-6dp"
-        android:indeterminate="true"
+         android:indeterminate="true"
         android:indeterminateDrawable="@drawable/progress_bg"
         android:progress="0" />
 </RelativeLayout>

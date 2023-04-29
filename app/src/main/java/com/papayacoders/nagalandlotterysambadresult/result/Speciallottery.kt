@@ -28,13 +28,13 @@ import com.papayacoders.nagalandlotterysambadresult.config.Speciallottery
 import com.papayacoders.nagalandlotterysambadresult.databinding.ActivitySpeciallotteryBinding
 
 class Speciallottery : mainapp() {
-    lateinit var binding:ActivitySpeciallotteryBinding
+    lateinit var binding: ActivitySpeciallotteryBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding= ActivitySpeciallotteryBinding.inflate(layoutInflater)
+        binding = ActivitySpeciallotteryBinding.inflate(layoutInflater)
         setContentView(binding.root)
         MobileAds.initialize(this)
-getspeciallottery()
+        getspeciallottery()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.skin)
         }
@@ -51,7 +51,7 @@ getspeciallottery()
                     startActivity(Intent(this, MainActivity::class.java))
                     alertDialog.dismiss()
                 }
-            }else {
+            } else {
                 val inte = Intent(this, ResultActivity::class.java)
                 showAds(this, inte)
             }
@@ -101,7 +101,7 @@ getspeciallottery()
                 startActivity(Intent(this, MainActivity::class.java))
                 alertDialog.dismiss()
             }
-        }else {
+        } else {
             val inte = Intent(this, ResultActivity::class.java)
             showAds(this, inte)
         }
@@ -112,6 +112,7 @@ getspeciallottery()
         MobileAds.initialize(this)
 
     }
+
     fun getspeciallottery() {
         val database = FirebaseDatabase.getInstance()
         val myRef = database.getReference("speciallottery")
@@ -127,7 +128,7 @@ getspeciallottery()
                 name = data?.lotteryname.toString()
                 url = data?.result.toString()
                 showres(url.toString())
-             }
+            }
 
             override fun onCancelled(error: DatabaseError) {
                 // Failed to read value
@@ -136,19 +137,20 @@ getspeciallottery()
         })
 
     }
-fun showres(url:String){
-    // Load the Firebase image URL using Glide
-    Glide.with(this)
-        .load(url)
-        .placeholder(R.drawable.noresult) // set a default image whi le loading
-        .error(R.drawable.noresult) // set a default image if there is an error
-        .into(binding.loadimage)
-// Enable zooming and panning on the PhotoView
-    val photoView = binding.loadimage
-    photoView.maximumScale = 10f // set the maximum scale value
-    photoView.mediumScale = 5f // set the medium scale value
-    photoView.minimumScale = 1f // set the minimum scale value
-    photoView.isZoomable = true // enable zooming
 
-}
+    fun showres(url: String) {
+        // Load the Firebase image URL using Glide
+        Glide.with(this)
+            .load(url)
+            .placeholder(R.drawable.noresult) // set a default image whi le loading
+            .error(R.drawable.noresult) // set a default image if there is an error
+            .into(binding.loadimage)
+// Enable zooming and panning on the PhotoView
+        val photoView = binding.loadimage
+        photoView.maximumScale = 10f // set the maximum scale value
+        photoView.mediumScale = 5f // set the medium scale value
+        photoView.minimumScale = 1f // set the minimum scale value
+        photoView.isZoomable = true // enable zooming
+
+    }
 }

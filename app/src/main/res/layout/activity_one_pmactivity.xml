@@ -35,20 +35,18 @@
 
         <com.github.chrisbanes.photoview.PhotoView
             android:id="@+id/loadimage"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:adjustViewBounds="true"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:src="@drawable/noresult" />
+            android:layout_height="match_parent"
+             android:src="@drawable/noresult" />
 
         <com.google.android.ads.nativetemplates.TemplateView
             android:id="@+id/my_template"
             android:layout_width="match_parent"
+            android:visibility="gone"
             android:layout_height="wrap_content"
             android:layout_below="@id/loadimage"
             android:layout_alignParentBottom="true"
-            android:layout_marginBottom="5dp"
-            android:visibility="gone"
-            app:gnt_template_type="@layout/gnt_medium_template_view" />
+             app:gnt_template_type="@layout/gnt_medium_template_view" />
     </RelativeLayout>
 </ScrollView>

@@ -43,7 +43,8 @@ class MainActivity : mainapp() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
-    private var previousMenuItem: MenuItem? = null
+
+
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {

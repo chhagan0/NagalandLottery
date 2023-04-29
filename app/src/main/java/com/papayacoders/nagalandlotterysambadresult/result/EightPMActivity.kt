@@ -36,7 +36,7 @@ class EightPMActivity : mainapp() {
         loadresult()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = ContextCompat.getColor(this, R.color.blue)
+            window.statusBarColor = ContextCompat.getColor(this, R.color.purple)
         }
 
         binding.btnback.setOnClickListener {

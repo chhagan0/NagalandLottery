@@ -20,12 +20,14 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+//            shrinkRecources true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
         viewBinding{
             enable true
         }
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -55,6 +57,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.15.1'
     implementation 'com.github.chrisbanes:PhotoView:2.3.0'
     implementation project(':nativetemplates')
-    implementation 'com.android.support:customtabs:28.0.0'
+//    implementation 'com.android.support:customtabs:28.0.0'
 
 }

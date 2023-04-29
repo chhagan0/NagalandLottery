@@ -419,7 +419,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/_10sdp"
-
+android:layout_marginBottom="10dp"
                 android:layout_marginTop="@dimen/_25sdp"
                 android:backgroundTint="@color/gray">
 
@@ -485,7 +485,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="@dimen/_15sdp"
-          app:adSize="SMART_BANNER"
+           app:adSize="SMART_BANNER"
         app:adUnitId="@string/bannerad1" />
 </RelativeLayout>

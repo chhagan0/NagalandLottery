@@ -246,7 +246,12 @@ class ResultActivity : mainapp() {
                 val value = dataSnapshot.child("visible").getValue(Boolean::class.java)
                 name = data?.lotteryname.toString()
                 url = data?.result.toString()
-                binding.lotteryname.setText(Speciallottery.lotteryname)
+                if (Speciallottery.lotteryname.isNullOrBlank()){
+                    binding.lotteryname.setText("Bumper")
+                }else{
+
+                    binding.lotteryname.setText(Speciallottery.lotteryname)
+                }
                 if (value == true) {
                     binding.speciallottery.visibility = View.VISIBLE
                 } else {

@@ -43,11 +43,14 @@ class OldResultActivity : mainapp() {
         binding = ActivityOldResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
         recyclerView = binding.recyclerView
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        arrayList = arrayListOf()
 
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+
+        arrayList = arrayListOf()
+loadres()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.statusBarColor = ContextCompat.getColor(this, R.color.purple)
+            window.statusBarColor = ContextCompat.getColor(this, R.color.blue)
         }
         MobileAds.initialize(this)
         db = FirebaseFirestore.getInstance()
@@ -74,22 +77,7 @@ class OldResultActivity : mainapp() {
             }
 
         }
-        db.collection("images").get().addOnSuccessListener {
-            d("CHAGANN", "db Success: ${it.documents}")
 
-            for (data in it.documents) {
-                var result: Oldresult? = data.toObject(Oldresult::class.java)
-                if (result != null) {
-                    arrayList.add(result)
-
-                }
-                recyclerView.adapter = MyAdapter(arrayList)
-            }
-            binding.progressbar.visibility = View.GONE
-        }
-            .addOnFailureListener {
-                d("CHAGANN", "db Failed: $it")
-            }
 
     }
 
@@ -132,6 +120,31 @@ class OldResultActivity : mainapp() {
     override fun onResume() {
         super.onResume()
         MobileAds.initialize(this)
+
+    }
+    fun loadres(){
+
+        db.collection("images").get().addOnSuccessListener { snapshot ->
+        d("CHAGANN", "db Success: ${snapshot.documents}")
+
+        val arrayList = ArrayList<Oldresult>()
+
+        for (data in snapshot.documents) {
+            val result: Oldresult? = data.toObject(Oldresult::class.java)
+            if (result != null) {
+                arrayList.add(0,result)
+            }
+        }
+
+        // Reverse the order of items in the arrayList
+        arrayList.reverse()
+
+        recyclerView.adapter = MyAdapter(arrayList)
+        binding.progressbar.visibility = View.GONE
+    }
+        .addOnFailureListener { exception ->
+            d("CHAGANN", "db Failed: $exception")
+        }
 
     }
 }
