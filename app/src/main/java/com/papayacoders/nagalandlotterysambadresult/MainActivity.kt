@@ -28,6 +28,7 @@ import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.onesignal.OneSignal
 import com.papayacoders.nagalandlotterysambadresult.ads.backintersitial
 import com.papayacoders.nagalandlotterysambadresult.ads.intertitial.Companion.load
 import com.papayacoders.nagalandlotterysambadresult.ads.intertitial.Companion.showAds
@@ -43,9 +44,7 @@ class MainActivity : mainapp() {
     lateinit var toggle: ActionBarDrawerToggle
     lateinit var drawerLayout: DrawerLayout
     lateinit var navigationView: NavigationView
-
-
-
+    const val ONESIGNAL_APP_ID = "2282fdc9-126b-4db5-9b0b-d8a3f7077a16"
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +66,15 @@ class MainActivity : mainapp() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.menuicon)
 
+        OneSignal.setLogLevel(OneSignal.LOG_LEVEL.VERBOSE, OneSignal.LOG_LEVEL.NONE)
+
+        // OneSignal Initialization
+        OneSignal.initWithContext(this)
+        OneSignal.setAppId(Companion.ONESIGNAL_APP_ID)
+
+        // promptForPushNotifications will show the native Android notification permission prompt.
+        // We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 7)
+        OneSignal.promptForPushNotifications();
 
         loadresult()
         nativeads()

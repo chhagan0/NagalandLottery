@@ -18,6 +18,7 @@ import com.google.android.ads.nativetemplates.NativeTemplateStyle
 import com.google.android.ads.nativetemplates.TemplateView
 import com.google.android.gms.ads.*
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.papayacoders.nagalandlotterysambadresult.Adapter.MyAdapter
@@ -48,7 +49,7 @@ class OldResultActivity : mainapp() {
         recyclerView.layoutManager = LinearLayoutManager(this)
 
         arrayList = arrayListOf()
-loadres()
+        loadres()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             window.statusBarColor = ContextCompat.getColor(this, R.color.blue)
         }
@@ -122,29 +123,32 @@ loadres()
         MobileAds.initialize(this)
 
     }
-    fun loadres(){
 
-        db.collection("images").get().addOnSuccessListener { snapshot ->
-        d("CHAGANN", "db Success: ${snapshot.documents}")
+    fun loadres() {
 
-        val arrayList = ArrayList<Oldresult>()
+        db.collection("images")
+            .orderBy("timestamp", Query.Direction.DESCENDING)
+            .get().addOnSuccessListener { snapshot ->
+            d("CHAGANN", "db Success: ${snapshot.documents}")
 
-        for (data in snapshot.documents) {
-            val result: Oldresult? = data.toObject(Oldresult::class.java)
-            if (result != null) {
-                arrayList.add(0,result)
+            val arrayList = ArrayList<Oldresult>()
+
+            for (data in snapshot.documents) {
+                val result: Oldresult? = data.toObject(Oldresult::class.java)
+                if (result != null) {
+                    arrayList.add(0, result)
+                }
             }
-        }
 
-        // Reverse the order of items in the arrayList
-        arrayList.reverse()
+            // Reverse the order of items in the arrayList
+            arrayList.reverse()
 
-        recyclerView.adapter = MyAdapter(arrayList)
-        binding.progressbar.visibility = View.GONE
-    }
-        .addOnFailureListener { exception ->
-            d("CHAGANN", "db Failed: $exception")
+            recyclerView.adapter = MyAdapter(arrayList)
+            binding.progressbar.visibility = View.GONE
         }
+            .addOnFailureListener { exception ->
+                d("CHAGANN", "db Failed: $exception")
+            }
 
     }
 }

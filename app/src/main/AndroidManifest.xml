@@ -16,7 +16,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.NagalandLotterySambadResult"
         tools:targetApi="31">
-
+        <activity
+            android:name=".result.SingleOldresult2"
+            android:exported="false" />
         <activity
             android:name=".result.SingleResult"
             android:exported="false" />
@@ -46,7 +48,8 @@
             android:exported="false" />
         <activity
             android:name=".SplashScreen.SplashScreen"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.SplashScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

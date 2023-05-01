@@ -141,20 +141,23 @@
                   app:layout_constraintTop_toTopOf="parent"
                   >
               </TextView>
+
               <RatingBar
                   android:id="@+id/rating_bar"
-                  android:background="@color/gnt_white"
                   android:layout_width="wrap_content"
                   android:layout_height="match_parent"
-                  android:textSize="@dimen/gnt_text_size_small"
-                  android:textColor="@color/gnt_gray"
-                  android:numStars="5"
-                  android:stepSize="0.1"
-                  android:lines="1"
-                  android:layout_marginTop="@dimen/gnt_no_margin"
-                  android:layout_marginBottom="@dimen/gnt_no_margin"
                   android:layout_marginStart="@dimen/gnt_no_margin"
+                  android:layout_marginTop="@dimen/gnt_no_margin"
                   android:layout_marginEnd="@dimen/gnt_no_margin"
+                  android:layout_marginBottom="@dimen/gnt_no_margin"
+                  android:background="@color/gnt_white"
+                  android:lines="1"
+                   android:numStars="5"
+                  android:scaleX="0.8"
+                  android:scaleY="0.8"
+                  android:stepSize="0.1"
+                  android:textColor="@color/gnt_gray"
+                  android:textSize="@dimen/gnt_text_size_small"
                   app:layout_constraintBottom_toBottomOf="parent"
                   app:layout_constraintEnd_toEndOf="parent"
                   app:layout_constraintStart_toEndOf="@id/ad_notification_view"
@@ -188,19 +191,21 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
       </androidx.constraintlayout.widget.ConstraintLayout>
+
       <TextView
-          android:layout_width="match_parent"
-          android:layout_margin="@dimen/gnt_no_size"
-          android:layout_height="wrap_content"
-          android:paddingBottom="@dimen/gnt_default_margin"
-          android:paddingLeft="@dimen/gnt_default_margin"
           android:id="@+id/body"
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_margin="@dimen/gnt_no_size"
+          android:layout_marginBottom="@dimen/gnt_default_margin"
+          android:paddingLeft="@dimen/gnt_default_margin"
+          android:paddingBottom="@dimen/gnt_default_margin"
           app:layout_constraintBottom_toTopOf="@+id/cta"
           app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.555"
           app:layout_constraintStart_toStartOf="parent"
-          app:layout_constraintTop_toBottomOf="@id/middle"
-          android:layout_marginBottom="@dimen/gnt_default_margin"
-          />
+          app:layout_constraintTop_toBottomOf="@id/middle" />
+
       <androidx.appcompat.widget.AppCompatButton
           android:id="@+id/cta"
           android:layout_width="match_parent"

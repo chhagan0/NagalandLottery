@@ -35,6 +35,7 @@ int drawable ad_mark 0x0
 int drawable bg_ad_btn_common 0x0
 int drawable gnt_outline_shape 0x0
 int drawable gnt_rounded_corners_shape 0x0
+int drawable rating_star 0x0
 int id ad_container 0x0
 int id ad_notification_view 0x0
 int id background 0x0

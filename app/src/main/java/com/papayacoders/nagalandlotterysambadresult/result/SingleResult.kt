@@ -29,13 +29,14 @@ import com.papayacoders.nagalandlotterysambadresult.databinding.ActivitySingleRe
 class SingleResult : mainapp() {
     lateinit var binding: ActivitySingleResultBinding
     var url: String = ""
-    private lateinit var adView: AdView
+     private lateinit var adView: AdView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySingleResultBinding.inflate(layoutInflater)
         setContentView(binding.root)
         url = intent.getStringExtra("result").toString()
+
         Glide.with(this)
             .load(url.toString())
             .listener(object :RequestListener<Drawable>{
@@ -125,7 +126,7 @@ class SingleResult : mainapp() {
         alertDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         view.findViewById<CardView>(R.id.btnback).setOnClickListener {
             startActivity(Intent(this, MainActivity::class.java))
-            alertDialog.dismiss()
+           alertDialog.dismiss()
         }
     } else {
         val inte = Intent(this, OldResultActivity::class.java)

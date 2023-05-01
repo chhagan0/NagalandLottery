@@ -1,5 +1,6 @@
 package com.papayacoders.nagalandlotterysambadresult.SplashScreen
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
@@ -9,7 +10,9 @@ import androidx.core.content.ContextCompat
 import com.papayacoders.nagalandlotterysambadresult.MainActivity
 import com.papayacoders.nagalandlotterysambadresult.R
 
+@SuppressLint("CustomSplashScreen")
 class SplashScreen : AppCompatActivity() {
+    @SuppressLint("ObsoleteSdkInt")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)

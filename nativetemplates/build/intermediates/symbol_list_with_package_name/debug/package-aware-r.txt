@@ -36,6 +36,7 @@ drawable ad_mark
 drawable bg_ad_btn_common
 drawable gnt_outline_shape
 drawable gnt_rounded_corners_shape
+drawable rating_star
 id ad_container
 id ad_notification_view
 id background
