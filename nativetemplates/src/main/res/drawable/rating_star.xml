@@ -1,0 +1,4 @@
+<style name="SmallRatingBar" parent="@android:style/Widget.RatingBar">
+    <item name="android:scaleX">0.75</item>
+    <item name="android:scaleY">0.75</item>
+</style>
